@@ -297,10 +297,10 @@ Wire Wire Line
 Wire Wire Line
 	2550 3000 2550 3150
 Wire Wire Line
-	3200 3100 2550 3100
+	2150 3100 3200 3100
 Connection ~ 2550 3100
 Wire Wire Line
-	2550 3650 6300 3650
+	2150 3650 6300 3650
 Connection ~ 3900 3650
 Wire Wire Line
 	2550 2700 2550 2100
@@ -477,4 +477,20 @@ Wire Wire Line
 	5800 3400 6000 3400
 Wire Wire Line
 	6300 3650 6300 3600
+$Comp
+L R R4
+U 1 1 59015000
+P 2150 3400
+F 0 "R4" V 2230 3400 50  0000 C CNN
+F 1 "R||" V 2150 3400 50  0000 C CNN
+F 2 "Resistors_ThroughHole:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal" V 2080 3400 50  0001 C CNN
+F 3 "" H 2150 3400 50  0000 C CNN
+	1    2150 3400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2150 3250 2150 3100
+Wire Wire Line
+	2150 3550 2150 3650
+Connection ~ 2550 3650
 $EndSCHEMATC
