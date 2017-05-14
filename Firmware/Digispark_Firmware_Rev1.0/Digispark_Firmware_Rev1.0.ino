@@ -5,7 +5,7 @@ const int BIASPOT = 3; //For analogRead, pin3 is 3
 //OUTPUTS
 const int LED = 4; //Circuit LED on pin 4
 //const int LED = 1; //internal LED on pin 1
-const int RLY_OUT = 5; //Output, pin no. matches
+const int RLY_OUT = 0; //Output, pin no. matches CHANGED TO PIN 0, PIN 5 BROKE
 
 
 // the setup routine runs once when you press reset:
@@ -30,18 +30,20 @@ void setup() {
 void loop() {
   //Read sensor and bias pots
   //float temp = analogRead(THERMISTOR); //Use a float if doing math to correct for non-linear sensor
-  int bias = readAvg(3, BIASPOT, 30); //3 averages of the bias pot
-  int temp = readAvg(5, THERMISTOR, 250); //5 averages of the thermistor, .25sec total averaging time. 
+  //int bias = readAvg(3, BIASPOT, 30); //3 averages of the bias pot
+  int bias = readAvg(2, BIASPOT, 5);
+  //int temp = readAvg(5, THERMISTOR, 250); //5 averages of the thermistor, .25sec total averaging time. 
+  int temp = readAvg(2, THERMISTOR, 5);
   
   //Control logic: Check temp in outer loop, inner loops check if relay status needs changed
   if(temp > bias){ //Temp is too high
-    if(RLY_OUT == 0){ //Relay is off, turn it on
+    if(digitalRead(RLY_OUT) == LOW){ //Relay is off, turn it on
       digitalWrite(LED, HIGH);
       digitalWrite(RLY_OUT, HIGH);
     }
     //delay(10); //Necessary here??
   } else { //Temp is low enough
-    if(RLY_OUT == 1){ //If relay is on, turn it off 
+    if(digitalRead(RLY_OUT) == HIGH){ //If relay is on, turn it off 
       digitalWrite(LED, LOW);
       digitalWrite(RLY_OUT, LOW);
     }
