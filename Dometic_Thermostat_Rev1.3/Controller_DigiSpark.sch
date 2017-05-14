@@ -221,17 +221,6 @@ F 3 "" H 8100 2500 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_01X02 P2
-U 1 1 58FFEBFE
-P 2800 2700
-F 0 "P2" H 2800 2850 50  0000 C CNN
-F 1 "UNUSED_MICRO_PINS" V 2900 2600 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x02_Pitch2.00mm" H 2800 2700 50  0001 C CNN
-F 3 "" H 2800 2700 50  0000 C CNN
-	1    2800 2700
-	-1   0    0    1   
-$EndComp
-$Comp
 L C C1
 U 1 1 58FFF370
 P 2050 2000
@@ -470,15 +459,27 @@ Wire Wire Line
 Wire Wire Line
 	5800 3400 6000 3400
 Wire Wire Line
-	3000 2650 3100 2650
-Wire Wire Line
-	3100 2650 3100 2900
-Wire Wire Line
 	3100 2900 3200 2900
-Wire Wire Line
-	3000 2750 3000 3550
-Wire Wire Line
-	3000 3550 4550 3550
-Wire Wire Line
-	4550 3550 4550 3150
+$Comp
+L CONN_01X01 P7
+U 1 1 5918E43D
+P 2900 2900
+F 0 "P7" H 2900 3000 50  0000 C CNN
+F 1 "Pin_1" V 3000 2900 50  0000 C CNN
+F 2 "Wire_Pads:SolderWirePad_single_0-8mmDrill" H 2900 2900 50  0001 C CNN
+F 3 "" H 2900 2900 50  0000 C CNN
+	1    2900 2900
+	-1   0    0    1   
+$EndComp
+$Comp
+L CONN_01X01 P8
+U 1 1 5918EB66
+P 4550 3350
+F 0 "P8" H 4550 3450 50  0000 C CNN
+F 1 "Pin_5" V 4650 3350 50  0000 C CNN
+F 2 "Wire_Pads:SolderWirePad_single_0-8mmDrill" H 4550 3350 50  0001 C CNN
+F 3 "" H 4550 3350 50  0000 C CNN
+	1    4550 3350
+	0    1    1    0   
+$EndComp
 $EndSCHEMATC
