@@ -1,3 +1,8 @@
+/*Thermostat firmware
+  Rev 1.6
+  Increased delay in relay cycling, prev had hysterisis when cycling relay @ temp.
+*/
+
 //Name pins
 //INPUTS
 const int THERMISTOR = 1; //For analogRead, pin2 is 1. Yes, confusing...
@@ -7,11 +12,10 @@ const int LED = 4; //Circuit LED on pin 4
 const int RLY_OUT = 0; //Output. NOTE: do not use pin 5, resets micro on chinese clones
 
 
-// the setup routine runs once when you press reset:
 void setup() {                
   //Initialize pins
-//  pinMode(THERMISTOR, INPUT); //No need to set these as inputs, unless they were previously set as outputs
-//  pinMode(BIASPOT, INPUT);
+  pinMode(THERMISTOR, INPUT); //No need to set these as inputs, unless they were previously set as outputs
+  pinMode(BIASPOT, INPUT);    //Set anyway, safety's sake
   pinMode(LED, OUTPUT);
   digitalWrite(LED, LOW);
   pinMode(RLY_OUT, OUTPUT);
@@ -23,7 +27,6 @@ void setup() {
   digitalWrite(RLY_OUT, LOW);
 }
 
-// the loop routine runs over and over again forever:
 void loop() {
   //Read sensor and bias pots
   int bias = readAvg(2, BIASPOT, 5);
@@ -44,7 +47,7 @@ void loop() {
     }
     //delay(10);
   } 
-  delay(100); //Delay 1/4 sec, to prevent hysterisis. Possibly increase this to >1 sec, depending on relay behavior.
+  delay(60000L); //Delay 60 sec before taking another reading, prevents rapid cycling of relay.
 }
 
 int readAvg(int num, int pin, int delayTime){  //Take average of 'num' analogReads on 'pin'. Delay time is total time for the loop.
